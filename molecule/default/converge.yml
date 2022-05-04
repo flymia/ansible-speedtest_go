@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include flymia.speedtest_go"
+      include_role:
+        name: "flymia.speedtest_go"
