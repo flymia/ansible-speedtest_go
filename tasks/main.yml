@@ -1,2 +1,7 @@
 ---
 # tasks file for speedtest_go
+- name: Load variables for specific CPU architecture
+  include_vars: "{{ ansible_architecture }}.yml"
+
+- debug:
+    msg: "{{ download_url }}"

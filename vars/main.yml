@@ -1,2 +1,4 @@
 ---
 # vars file for speedtest_go
+current_version: 1.1.4
+download_url: https://github.com/librespeed/speedtest-go/releases/download/{{ current_version }}/speedtest-go_{{ current_version }}_linux_{{ architecture }}.tar.gz
