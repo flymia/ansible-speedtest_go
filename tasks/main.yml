@@ -1,7 +1,55 @@
 ---
 # tasks file for speedtest_go
+
+# We have to do this, because the release-download-url uses another set of CPU architecture-names (e.g. x86_64 -> amd64)
 - name: Load variables for specific CPU architecture
   include_vars: "{{ ansible_architecture }}.yml"
 
-- debug:
-    msg: "{{ download_url }}"
+- name: Create a group for the user
+  ansible.builtin.group:
+    name: "{{ spgo_group }}"
+    state: present
+
+- name: Create a user to run the program with
+  user:
+    name: "{{ spgo_username }}"
+    group: "{{ spgo_group }}"
+    system: yes
+    state: present
+
+- name: Create installation and configuration directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ spgo_username }}"
+    group: "{{ spgo_group }}"
+  with_items:
+    - "{{ spgo_installation_directory }}"
+    - "{{ spgo_configuration_directory }}"
+
+- name: Download and extract the tar
+  unarchive:
+    src: "{{ spgo_download_url }}"
+    dest: "{{ spgo_installation_directory }}"
+    group: "{{ spgo_group }}"
+    owner: "{{ spgo_username }}"
+    remote_src: yes
+
+- name: Remove the configuration file from it's default location
+  file:
+    path: "{{ spgo_installation_directory }}/settings.toml"
+    state: absent
+
+- name: Copy the configuration file to the config directory
+  template:
+    src: templates/settings.toml.j2
+    dest: "{{ spgo_configuration_directory }}/settings.toml"
+    group: "{{ spgo_group }}"
+    owner: "{{ spgo_username }}"
+
+- name: Copy the systemd-service file
+  template:
+    src: templates/speedtest-go.service.j2
+    dest: /etc/systemd/system/speedtest-go.service
+    owner: root
+    dest: root

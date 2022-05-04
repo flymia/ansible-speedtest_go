@@ -1,2 +1,39 @@
 ---
 # defaults file for speedtest_go
+
+# Current version for release download
+spgo_current_version: 1.1.4
+
+# URL of the release
+spgo_download_url: https://github.com/librespeed/speedtest-go/releases/download/v{{ spgo_current_version }}/speedtest-go_{{ spgo_current_version }}_linux_{{ system_architecture }}.tar.gz
+
+# User to run the software with
+spgo_username: speedtest-go
+spgo_group: speedtest-go
+
+# Location of the configuration file
+spgo_configuration_directory: /etc/speedtest-go
+
+# Location of the binary
+spgo_installation_directory: /opt/speedtest-go
+
+# Configuration file variables
+spgo_config_bind_address: ""
+spgo_config_listen_port: "8989"
+spgo_config_proxyprotocol_port: "0"
+spgo_config_server_lat: "1"
+spgo_config_server_lng: "1"
+spgo_config_api_key: ""
+spgo_config_assets_path: ""
+spgo_config_statistics_password: "PASSWORD"
+spgo_config_redact_ip_addresses: "false"
+spgo_config_database_type: "bolt"
+spgo_config_database_hostname: ""
+spgo_config_database_name: ""
+spgo_config_database_username: ""
+spgo_config_database_password: ""
+spgo_config_database_file: "speedtest.db"
+spgo_config_enable_tls: "false"
+spgo_config_enable_http2: "false"
+spgo_config_tls_cert_file: "cert.pem"
+spgo_config_tls_key_file: "privkey.pem"
