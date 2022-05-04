@@ -1,38 +1,38 @@
 # bind address, use empty string to bind to all interfaces
-bind_address=""
+bind_address="{{spgo_config_bind_address}}"
 # backend listen port
-listen_port=8989
+listen_port={{ spgo_config_listen_port }}
 # proxy protocol port, use 0 to disable
-proxyprotocol_port=0
+proxyprotocol_port={{ spgo_config_proxyprotocol_port }}
 # Server location
-server_lat=1
-server_lng=1
+server_lat={{ spgo_config_server_lat }}
+server_lng={{ spgo_config_server_lng }}
 # ipinfo.io API key, if applicable
-ipinfo_api_key=""
+ipinfo_api_key="{{ spgo_config_api_key }}"
 
 # assets directory path, defaults to `assets` in the same directory
-assets_path=""
+assets_path="{{ spgo_config_assets_path }}"
 
 # password for logging into statistics page
-statistics_password="PASSWORD"
+statistics_password="{{ spgo_config_statistics_password }}"
 # redact IP addresses
-redact_ip_addresses=false
+redact_ip_addresses={{ spgo_config_redact_ip_addresses }}
 
 # database type for statistics data, currently supports: none, memory, bolt, mysql, postgresql
 # if none is specified, no telemetry/stats will be recorded, and no result PNG will be generated
-database_type="bolt"
-database_hostname=""
-database_name=""
-database_username=""
-database_password=""
+database_type="{{ spgo_config_database_type }}"
+database_hostname="{{ spgo_config_database_hostname }}"
+database_name="{{ spgo_config_database_name }}"
+database_username="{{ spgo_config_database_username }}"
+database_password="{{ spgo_config_database_password }}"
 
 # if you use `bolt` as database, set database_file to database file location
-database_file="speedtest.db"
+database_file="{{ spgo_config_database_file }}"
 
 # TLS and HTTP/2 settings. TLS is required for HTTP/2
-enable_tls=false
-enable_http2=false
+enable_tls={{ spgo_config_enable_tls }}
+enable_http2={{ spgo_config_enable_http2 }}
 
 # if you use HTTP/2 or TLS, you need to prepare certificates and private keys
-# tls_cert_file="cert.pem"
-# tls_key_file="privkey.pem"
+# tls_cert_file="{{ spgo_config_tls_cert_file }}"
+# tls_key_file="{{ spgo_config_tls_key_file }}"

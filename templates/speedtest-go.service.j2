@@ -1,0 +1,10 @@
+[Unit]
+Description=SpeedTest-Go server
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+ExecStart={{ spgo_installation_directory }}/speedtest-backend -c {{ spgo_configuration_directory }}/settings.toml
+
+[Install]
+WantedBy=multi-user.target
