@@ -1,2 +1,6 @@
 ---
 # handlers file for speedtest_go
+- name: Restart speedtest-go
+  service:
+    name: speedtest-go
+    state: restarted
