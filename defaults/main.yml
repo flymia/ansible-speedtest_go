@@ -17,6 +17,9 @@ spgo_configuration_directory: /etc/speedtest-go
 # Location of the binary
 spgo_installation_directory: /opt/speedtest-go
 
+# Enable the service?
+spgo_enable_service: true
+
 # Configuration file variables
 spgo_config_bind_address: ""
 spgo_config_listen_port: "8989"

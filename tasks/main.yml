@@ -34,6 +34,7 @@
     group: "{{ spgo_group }}"
     owner: "{{ spgo_username }}"
     remote_src: yes
+  notify: Restart speedtest-go
 
 - name: Remove the configuration file from it's default location
   file:
@@ -42,14 +43,27 @@
 
 - name: Copy the configuration file to the config directory
   template:
-    src: templates/settings.toml.j2
+    src: settings.toml.j2
     dest: "{{ spgo_configuration_directory }}/settings.toml"
     group: "{{ spgo_group }}"
     owner: "{{ spgo_username }}"
+  notify: Restart speedtest-go
 
 - name: Copy the systemd-service file
   template:
-    src: templates/speedtest-go.service.j2
+    src: speedtest-go.service.j2
     dest: /etc/systemd/system/speedtest-go.service
     owner: root
-    dest: root
+    group: root
+  notify: Run daemon_reload
+
+- name: Start the service
+  service:
+    name: speedtest-go
+    state: started
+
+- name: Enable the service
+  systemd:
+    name: speedtest-go
+    enabled: yes
+  when: spgo_enable_service == true
