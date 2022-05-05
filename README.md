@@ -1,38 +1,66 @@
-Role Name
+flymia.speedtest_go
 =========
 
-A brief description of the role goes here.
+This role installs the application [speedtest-go](https://github.com/librespeed/speedtest-go), a simple speedtest web app written in Go.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+* A working GNU/Linux system using systemd (x86_64 and ARM)
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+* ```spgo_current_version```: Current version to download. ```Default: 1.1.4```
+* ```spgo_download_url```: URL of the release. ```Default: https://github.com/librespeed/speedtest-go/releases/download/v{{ spgo_current_version }}/speedtest-go_{{ spgo_current_version }}_linux_{{ system_architecture }}.tar.gz```
+* ```spgo_username```: User and group to run the software with. ```Default: speedtest-go```
+* ```spgo_group```: User and group to run the software with. ```Default: speedtest-go```
+* ```spgo_configuration_directory```: Location of the configuration file. ```Default: /etc/speedtest-go```
+* ```spgo_installation_directory```: Location of the binary. ```Default: /opt/speedtest-go```
+* ```spgo_enable_service```: Enable the service? ```Default: true```
+
+The following variables were provided by the config file of the application and have been translated to Ansible variables. Lookup the config file to see what they actually do:
+
+* ```spgo_config_bind_address```
+* ```spgo_config_listen_port```
+* ```spgo_config_proxyprotocol_port```
+* ```spgo_config_server_lat```
+* ```spgo_config_server_lng```
+* ```spgo_config_api_key```
+* ```spgo_config_assets_path```
+* ```spgo_config_statistics_password```
+* ```spgo_config_redact_ip_addresses```
+* ```spgo_config_database_type```
+* ```spgo_config_database_hostname```
+* ```spgo_config_database_name```
+* ```spgo_config_database_username```
+* ```spgo_config_database_password```
+* ```spgo_config_database_file```
+* ```spgo_config_enable_tls```
+* ```spgo_config_enable_http2```
+* ```spgo_config_tls_cert_file```
+* ```spgo_config_tls_key_file```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Since it is not a very complex role, the example playbook is fairly easy. I include it here with some modified variables.
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: flymia.speedtest_go }
+      vars:
+        - spgo_configuration_directory: /srv/speedtest-go
+        - spgo_installation_directory: /usr/local/bin
+        - spgo_enable_service: false
 
 License
 -------
 
-BSD
+GPL 3.0
 
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
