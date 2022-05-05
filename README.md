@@ -1,3 +1,5 @@
+![Build status](https://github.com/flymia/ansible-speedtest_go/actions/workflows/ci.yml/badge.svg)
+
 flymia.speedtest_go
 =========
 
