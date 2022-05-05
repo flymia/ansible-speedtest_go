@@ -5,17 +5,17 @@ driver:
   name: docker
 platforms:
   - name: rockylinux
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-rockylinux8}-ansible:latest"
+    image: "flymia/docker-${MOLECULE_DISTRO:-rockylinux8}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+   # volumes:
+   #   - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
   - name: debian
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian11}-ansible:latest"
+    image: "flymia/docker-${MOLECULE_DISTRO:-debian11}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+   # volumes:
+   #   - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
 provisioner:
