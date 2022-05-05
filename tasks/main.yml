@@ -36,10 +36,13 @@
     remote_src: yes
   notify: Restart speedtest-go
 
-- name: Remove the configuration file from it's default location
+- name: Create a symbolic link to the binary location of choice
   file:
-    path: "{{ spgo_installation_directory }}/settings.toml"
-    state: absent
+    src: "{{ spgo_installation_directory }}/speedtest-backend"
+    dest: "{{ spgo_binary_location }}"
+    owner: "{{ spgo_username }}"
+    group: "{{ spgo_group }}"
+    state: link
 
 - name: Copy the configuration file to the config directory
   template:

@@ -17,6 +17,9 @@ spgo_configuration_directory: /etc/speedtest-go
 # Location of the binary
 spgo_installation_directory: /opt/speedtest-go
 
+# A soft-link to the following folder will be created
+spgo_binary_location: /usr/local/bin/speedtest-backend
+
 # Enable the service?
 spgo_enable_service: true
 
