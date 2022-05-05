@@ -19,6 +19,7 @@ Role Variables
 * ```spgo_group```: User and group to run the software with. ```Default: speedtest-go```
 * ```spgo_configuration_directory```: Location of the configuration file. ```Default: /etc/speedtest-go```
 * ```spgo_installation_directory```: Location of the binary. ```Default: /opt/speedtest-go```
+* ```spgo_binary_location```: A soft-link to the following folder will be created. ```Default: /usr/local/bin/speedtest-backend```
 * ```spgo_enable_service```: Enable the service? ```Default: true```
 
 The following variables were provided by the config file of the application and have been translated to Ansible variables. Lookup the config file to see what they actually do:
