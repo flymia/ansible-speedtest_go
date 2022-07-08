@@ -2,7 +2,7 @@
 # defaults file for speedtest_go
 
 # Current version for release download
-spgo_current_version: 1.1.4
+spgo_current_version: 1.1.5
 
 # URL of the release
 spgo_download_url: https://github.com/librespeed/speedtest-go/releases/download/v{{ spgo_current_version }}/speedtest-go_{{ spgo_current_version }}_linux_{{ system_architecture }}.tar.gz
