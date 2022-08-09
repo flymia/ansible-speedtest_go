@@ -4,8 +4,15 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: rockylinux
+  - name: rockylinux8
     image: "ventor/docker-${MOLECULE_DISTRO:-rockylinux8}-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+   # volumes:
+   #   - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+  - name: rockylinux9
+    image: "ventor/docker-${MOLECULE_DISTRO:-rockylinux9}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
    # volumes:
    #   - /sys/fs/cgroup:/sys/fs/cgroup:ro
