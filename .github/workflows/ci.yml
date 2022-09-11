@@ -13,7 +13,6 @@ defaults:
     working-directory: 'flymia.speedtest_go'
 
 jobs:
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -44,8 +43,6 @@ jobs:
           - distro: rockylinux8
             playbook: converge.yml
           - distro: debian11
-            playbook: converge.yml
-          - distro: rockylinux9
             playbook: converge.yml
     steps:
       - name: Check out the codebase.
