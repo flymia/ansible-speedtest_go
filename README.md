@@ -13,7 +13,7 @@ Requirements
 Role Variables
 --------------
 
-* ```spgo_current_version```: Current version to download. ```Default: 1.1.4```
+* ```spgo_current_version```: Current version to download. ```Default: 1.1.5```
 * ```spgo_download_url```: URL of the release. ```Default: https://github.com/librespeed/speedtest-go/releases/download/v{{ spgo_current_version }}/speedtest-go_{{ spgo_current_version }}_linux_{{ system_architecture }}.tar.gz```
 * ```spgo_username```: User and group to run the software with. ```Default: speedtest-go```
 * ```spgo_group```: User and group to run the software with. ```Default: speedtest-go```
